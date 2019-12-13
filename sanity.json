@@ -1,18 +1,19 @@
 {
   "root": true,
-  "project": {
-    "name": "summitmaintenance"
-  },
   "api": {
-    "projectId": "61a7vkio",
+    "projectId": "dwkgbi7l",
     "dataset": "production"
+  },
+  "project": {
+    "name": "Gatsby Sanity CMS"
   },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "markdown"
   ],
   "parts": [
     {
