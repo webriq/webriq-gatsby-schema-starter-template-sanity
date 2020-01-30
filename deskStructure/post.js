@@ -15,7 +15,7 @@ const remoteURL =
 	"https://webriq-gatsby-cms-starter-template-sanity.netlify.com";
 const localURL = "http://localhost:8000";
 const previewURL =
-	window.location.hostname === "localhost" ? localURL : remoteURL;
+	"https://webriq-gatsby-cms-starter-template-sanity.netlify.com";
 
 export default S.listItem()
 	.title("Blog posts")

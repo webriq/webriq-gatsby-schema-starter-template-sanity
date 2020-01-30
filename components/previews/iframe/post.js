@@ -8,9 +8,11 @@ const WebPreview = ({ document, options }) => {
 	const { previewURL } = options;
 	const { slug } = document.displayed;
 
+	console.log(previewURL);
+
 	return (
 		<iframe
-			src={`${url}/${slug.current}`}
+			src={`${previewURL}/${slug.current}`}
 			frameBorder={0}
 			style={{ width: "100%", height: "100%" }}
 		/>
