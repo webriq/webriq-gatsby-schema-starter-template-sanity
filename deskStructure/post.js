@@ -12,7 +12,7 @@ import IframePreview from "../components/previews/iframe/post";
 
 // Determine Current URL
 const remoteURL =
-	"https://webriq-gatsby-webriq-cms-starter-template.netlify.com";
+	"https://webriq-gatsby-cms-starter-template-sanity.netlify.com";
 const localURL = "http://localhost:8000";
 const previewURL =
 	window.location.hostname === "localhost" ? localURL : remoteURL;
