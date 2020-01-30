@@ -11,11 +11,10 @@ import {
 import IframePreview from "../components/previews/iframe/post";
 
 // Determine Current URL
-const remoteURL =
-	"https://webriq-gatsby-cms-starter-template-sanity.netlify.com";
+const remoteURL = "https://gatsby-sanity-preview-test.netlify.com";
 const localURL = "http://localhost:8000";
 const previewURL =
-	"https://webriq-gatsby-cms-starter-template-sanity.netlify.com";
+	window.location.hostname === "localhost" ? localURL : remoteURL;
 
 export default S.listItem()
 	.title("Blog posts")

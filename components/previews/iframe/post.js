@@ -2,17 +2,17 @@ import S from "@sanity/desk-tool/structure-builder";
 import React from "react";
 
 // Simple example of web preview
-const url = "http://localhost:8000";
+const url = "https://gatsby-sanity-preview-test.netlify.com/";
 
 const WebPreview = ({ document, options }) => {
 	const { previewURL } = options;
 	const { slug } = document.displayed;
 
-	console.log(previewURL);
+	console.log(url);
 
 	return (
 		<iframe
-			src={`${previewURL}/${slug.current}`}
+			src={`${url}/${slug.current}`}
 			frameBorder={0}
 			style={{ width: "100%", height: "100%" }}
 		/>
