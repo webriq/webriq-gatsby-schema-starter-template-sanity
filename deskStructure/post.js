@@ -30,12 +30,23 @@ export default S.listItem()
 					.child(
 						S.documentTypeList("post")
 							.title("Published (Including Edits)")
-							.filter(
-								"_type == $type && !(_id in path('drafts.**')) && defined(hasBeenPublished) && hasBeenPublished"
-							)
+							.filter("_type == $type && !(_id in path('drafts.**'))")
 							.params({
 								type: "post"
 							})
+							.child(documentId =>
+								S.document()
+									.documentId(documentId)
+									.schemaType("post")
+									.views([
+										S.view.form().icon(FaFile),
+										S.view
+											.component(IframePreview)
+											.options({ previewURL, slug: "$slug" })
+											.icon(FiDatabase)
+											.title("Post Preview")
+									])
+							)
 					),
 				S.listItem()
 					.title("Drafts (Never Published)")
@@ -51,6 +62,19 @@ export default S.listItem()
 								type: "post",
 								state: "drafts"
 							})
+							.child(documentId =>
+								S.document()
+									.documentId(documentId)
+									.schemaType("post")
+									.views([
+										S.view.form().icon(FaFile),
+										S.view
+											.component(IframePreview)
+											.options({ previewURL, slug: "$slug" })
+											.icon(FiDatabase)
+											.title("Post Preview")
+									])
+							)
 					),
 				S.listItem()
 					.title("Unpublished (Previously Published)")
@@ -66,6 +90,19 @@ export default S.listItem()
 								type: "post",
 								state: "drafts"
 							})
+							.child(documentId =>
+								S.document()
+									.documentId(documentId)
+									.schemaType("post")
+									.views([
+										S.view.form().icon(FaFile),
+										S.view
+											.component(IframePreview)
+											.options({ previewURL, slug: "$slug" })
+											.icon(FiDatabase)
+											.title("Post Preview")
+									])
+							)
 					),
 				S.listItem()
 					.title("All Posts")
