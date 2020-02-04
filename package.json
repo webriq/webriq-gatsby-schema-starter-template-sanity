@@ -20,6 +20,7 @@
     "@sanity/cli": "^0.147.8",
     "@sanity/components": "^0.147.9",
     "@sanity/core": "^0.147.9",
+    "@sanity/dashboard": "^0.147.8",
     "@sanity/default-layout": "^0.147.9",
     "@sanity/default-login": "^0.147.0",
     "@sanity/desk-tool": "^0.147.9",
@@ -28,6 +29,7 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "sanity-plugin-asset-source-cloudinary": "^0.1.0",
+    "sanity-plugin-dashboard-widget-gatsby": "^1.0.9",
     "sanity-plugin-markdown": "^1.0.1"
   },
   "devDependencies": {

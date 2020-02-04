@@ -8,10 +8,11 @@ import {
 	FiCheck
 } from "react-icons/fi";
 
-import IframePreview from "../components/previews/iframe/post";
+import IframePreview from "../src/components/previews/iframe/post";
 
 // Determine Current URL
-const remoteURL = "https://gatsby-sanity-preview-test.netlify.com";
+const remoteURL =
+	"https://webriq-gatsby-cms-starter-template-sanity-5358417547.gtsb.io";
 const localURL = "http://localhost:8000";
 const previewURL =
 	window.location.hostname === "localhost" ? localURL : remoteURL;

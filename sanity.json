@@ -26,7 +26,9 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "asset-source-cloudinary",
-    "markdown"
+    "markdown",
+    "dashboard-widget-gatsby",
+    "@sanity/dashboard"
   ],
   "parts": [
     {
@@ -36,6 +38,10 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure/index"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "src/dashboardConfig.js"
     }
   ]
 }
