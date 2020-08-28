@@ -1,6 +1,11 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { FaFile } from "react-icons/fi";
 
+import EditIcon from 'part:@sanity/base/edit-icon'
+import EyeIcon from 'part:@sanity/base/eye-icon'
+import SeoPreview from '../src/components/previews/seo/SeoPreviews'
+import IframePreview from "../src/components/previews/iframe/page";
+
 export default S.listItem()
 	.title("Pages")
 	.child(
@@ -14,6 +19,17 @@ export default S.listItem()
 							.id("aboutPage")
 							.schemaType("page")
 							.documentId("about")
+							.views([
+								S.view.form().icon(EditIcon),
+								S.view
+									.component(IframePreview)
+									.icon(EyeIcon)
+									.title('Web Preview'),
+								// S.view
+								// 	.component(SeoPreview)
+								// 	.icon(EyeIcon)
+								// 	.title('SEO Preview'),
+							])
 					)
 					.icon(FaFile),
 				S.listItem()
@@ -23,6 +39,17 @@ export default S.listItem()
 							.id("contactPage")
 							.schemaType("page")
 							.documentId("contact")
+							.views([
+								S.view.form().icon(EditIcon),
+								S.view
+									.component(IframePreview)
+									.icon(EyeIcon)
+									.title('Web Preview'),
+								S.view
+									.component(SeoPreview)
+									.icon(EyeIcon)
+									.title('SEO Preview'),
+							])
 					)
 					.icon(FaFile)
 			])

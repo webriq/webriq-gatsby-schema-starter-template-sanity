@@ -6,12 +6,12 @@ import axios from 'axios';
 
 const assembleProjectUrl = ({displayed, options}) => {
   const {slug} = displayed
-  const {previewURL} = options
-  if (!slug || !previewURL) {
+  const {previewURL, page} = options
+  if (!page || !previewURL) {
     console.warn('Missing slug or previewURL', {slug, previewURL})
     return ''
   }
-  return `${previewURL}/${slug.current}`
+  return `${previewURL}/${page}`
 }
 
 class IframePreview extends React.PureComponent {
@@ -30,7 +30,6 @@ class IframePreview extends React.PureComponent {
   };
 
   componentDidMount() {
-    console.log('hello pows');
     axios.post(
       'https://yskeo5mgc0.execute-api.us-west-2.amazonaws.com/dev/startSandbox',
       {
@@ -43,7 +42,7 @@ class IframePreview extends React.PureComponent {
       console.log('response', response);
       this.setState({
         isLoading: false,
-        url: response.data.url,
+        url: response.url,
         error: false
       });
     }).catch( (e) => {
@@ -57,6 +56,23 @@ class IframePreview extends React.PureComponent {
   }
 
   render () {
+    // const {options} = this.props
+    // const {displayed} = this.props.document
+    // console.log('displayed', displayed);
+    // if (!displayed) {
+    //   return (<div className={styles.componentWrapper}>
+    //     <p>There is no document to preview</p>
+    //   </div>)
+    // }
+
+    // const url = assembleProjectUrl({displayed, options})
+
+    // if (!url) {
+    //   return (<div className={styles.componentWrapper}>
+    //     <p>Hmm. Having problems constructing the web front-end URL.</p>
+    //   </div>)
+    // }
+
     const { isLoading, url, error } = this.state;
 
     if(error) {
