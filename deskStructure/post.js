@@ -8,14 +8,10 @@ import {
 	FiCheck
 } from "react-icons/fi";
 
+import EditIcon from 'part:@sanity/base/edit-icon'
+import EyeIcon from 'part:@sanity/base/eye-icon'
+import SeoPreview from '../src/components/previews/seo/SeoPreviews'
 import IframePreview from "../src/components/previews/iframe/post";
-
-// Determine Current URL
-const remoteURL =
-	"https://webriq-gatsby-cms-starter-template-sanity-5358417547.gtsb.io";
-const localURL = "http://localhost:8000";
-const previewURL =
-	window.location.hostname === "localhost" ? localURL : remoteURL;
 
 export default S.listItem()
 	.title("Blog posts")
@@ -42,7 +38,6 @@ export default S.listItem()
 										S.view.form().icon(FaFile),
 										S.view
 											.component(IframePreview)
-											.options({ previewURL, slug: "$slug" })
 											.icon(FiDatabase)
 											.title("Post Preview")
 									])
@@ -70,7 +65,6 @@ export default S.listItem()
 										S.view.form().icon(FaFile),
 										S.view
 											.component(IframePreview)
-											.options({ previewURL, slug: "$slug" })
 											.icon(FiDatabase)
 											.title("Post Preview")
 									])
@@ -98,7 +92,6 @@ export default S.listItem()
 										S.view.form().icon(FaFile),
 										S.view
 											.component(IframePreview)
-											.options({ previewURL, slug: "$slug" })
 											.icon(FiDatabase)
 											.title("Post Preview")
 									])
@@ -123,7 +116,6 @@ export default S.listItem()
 										S.view.form().icon(FaFile),
 										S.view
 											.component(IframePreview)
-											.options({ previewURL, slug: "$slug" })
 											.icon(FiDatabase)
 											.title("Post Preview")
 									])
