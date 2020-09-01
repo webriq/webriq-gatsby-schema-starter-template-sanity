@@ -39,22 +39,20 @@ class IframePreview extends React.PureComponent {
             token: "sanity-token",
           },
         }
-      )
-      .then((response) => {
-        console.log("response", response);
-        this.setState({
-          isLoading: false,
-          url: response.url,
-          error: false,
-        });
-      })
-      .catch((e) => {
-        console.log("e", e);
-        this.setState({
-          isLoading: false,
-          url: "",
-          error: e,
-        });
+      }
+    ).then( (response) => {
+      console.log('response', response);
+      this.setState({
+        isLoading: false,
+        url: response.data.url,
+        error: false
+      });
+    }).catch( (e) => {
+      console.log('e', e);
+      this.setState({
+        isLoading: false,
+        url: '',
+        error: e
       });
   }
 
