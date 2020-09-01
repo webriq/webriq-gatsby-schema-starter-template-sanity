@@ -42,7 +42,7 @@ class IframePreview extends React.PureComponent {
       console.log('response', response);
       this.setState({
         isLoading: false,
-        url: response.url,
+        url: response.data.url,
         error: false
       });
     }).catch( (e) => {
