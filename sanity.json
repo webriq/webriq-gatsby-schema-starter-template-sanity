@@ -1,20 +1,20 @@
 {
   "root": true,
   "api": {
-    "projectId": "8p7b86zx",
+    "projectId": "dwkgbi7l",
     "dataset": "production"
   },
   "project": {
-    "name": "WebriQ Sandbox",
+    "name": "WebriQ Studio",
     "basePath": "/"
   },
   "__experimental_spaces": [
     {
-      "name": "webriqsandbox",
-      "title": "WebriQ Sandbox",
+      "name": "studio",
+      "title": "WebriQ Studio",
       "default": true,
       "api": {
-        "projectId": "8p7b86zx",
+        "projectId": "dwkgbi7l",
         "dataset": "production"
       }
     }
@@ -26,9 +26,7 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "asset-source-cloudinary",
-    "markdown",
-    "dashboard-widget-gatsby",
-    "@sanity/dashboard"
+    "markdown"
   ],
   "parts": [
     {

@@ -20,12 +20,12 @@ export default S.listItem()
 			.title("Status")
 			.items([
 				S.listItem()
-					.title("Published (Including New Edits)")
+					.title("Published (including new edits)")
 					.icon(FiLayers)
 					.schemaType("post")
 					.child(
 						S.documentTypeList("post")
-							.title("Published (Including Edits)")
+							.title("Published (including new edits)")
 							.filter("_type == $type && !(_id in path('drafts.**'))")
 							.params({
 								type: "post"
@@ -44,12 +44,12 @@ export default S.listItem()
 							)
 					),
 				S.listItem()
-					.title("Drafts (Never Published)")
+					.title("Drafts (never published)")
 					.icon(FiEdit)
 					.schemaType("post")
 					.child(
 						S.documentTypeList("post")
-							.title("Drafts (Never Published)")
+							.title("Drafts (never published)")
 							.filter(
 								"_type == $type && _id in path('drafts.**') && !defined(hasBeenPublished)"
 							)
@@ -71,12 +71,12 @@ export default S.listItem()
 							)
 					),
 				S.listItem()
-					.title("Unpublished (Previously Published)")
+					.title("Unpublished (previously published)")
 					.icon(FiInbox)
 					.schemaType("post")
 					.child(
 						S.documentTypeList("post")
-							.title("Unpublished (Previously Published)")
+							.title("Unpublished (previously published)")
 							.filter(
 								"_type == $type && (_id in path('drafts.**')) && defined(hasBeenPublished) && !hasBeenPublished"
 							)

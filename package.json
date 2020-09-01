@@ -30,7 +30,6 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "sanity-plugin-asset-source-cloudinary": "^0.1.0",
-    "sanity-plugin-dashboard-widget-gatsby": "^1.0.9",
     "sanity-plugin-markdown": "^1.0.1"
   },
   "devDependencies": {
