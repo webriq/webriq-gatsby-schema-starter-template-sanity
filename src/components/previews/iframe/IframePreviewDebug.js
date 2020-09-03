@@ -31,7 +31,7 @@ class IframePreview extends React.PureComponent {
     return axios
       .get(
         (process.env.SANITY_STUDIO_GET_SITE_PREVIEW_DETAILS ||
-          "https://app.webriq.com/api/cms") +
+          "https://staging.app.webriq.com/api/cms") +
           `?provider_id=${client.config().projectId}`,
         {
           headers: {
