@@ -9,7 +9,7 @@ import {
 } from "react-icons/fi";
 
 import SeoPreview from "../src/components/previews/seo/SeoPreviews";
-import IframePreview from "../src/components/previews/iframe/IframePreviewDebug";
+import IframePreview from "../src/components/previews/iframe/IframePreview";
 
 console.log("process.env", process.env);
 console.log("SANITY_STUDIO_TEST", process.env.SANITY_STUDIO_TEST);
