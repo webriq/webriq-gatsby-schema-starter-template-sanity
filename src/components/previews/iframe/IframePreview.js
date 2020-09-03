@@ -159,6 +159,12 @@ class IframePreview extends React.PureComponent {
     if (error) {
       return (
         <div className={styles.componentWrapper}>
+          <div className={styles.navHeader}>
+            Preview encountered an error or not working?{" "}
+            <a href="#" onClick={(e) => this._handleClickCreateNewOne(e)}>
+              Click here to create a new one.
+            </a>
+          </div>
           <h3>
             {this.state.message || "Error: " + error.msg || error.message}
           </h3>
