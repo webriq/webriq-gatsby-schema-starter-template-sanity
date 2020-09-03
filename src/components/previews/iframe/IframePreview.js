@@ -69,7 +69,7 @@ class IframePreview extends React.PureComponent {
     }
   };
 
-  async _startNew({ forceNew = false } = {}) {
+  async _createNew({ forceNew = false } = {}) {
     const sitePreviewDetails = await this._determinePreviewUrl();
     console.log("sitePreviewDetails", sitePreviewDetails);
 
@@ -109,8 +109,18 @@ class IframePreview extends React.PureComponent {
     }
   }
 
+  _handleClickCreateNewOne = (e) => {
+    e.preventDefault();
+    const q = confirm(
+      "The process will take a while. Are you sure you want to create a new one?"
+    );
+    if (q) {
+      this._createNew({ forceNew: true });
+    }
+  };
+
   componentDidMount() {
-    this._startNew();
+    this._createNew();
 
     window.addEventListener("message", this._checkHasSiteLoaded, false);
   }
@@ -174,6 +184,12 @@ class IframePreview extends React.PureComponent {
 
     return (
       <div className={styles.componentWrapper}>
+        <div className={styles.navHeader}>
+          Preview encountered an error or not working?{" "}
+          <a href="#" onClick={(e) => this._handleClickCreateNewOne(e)}>
+            Click here to create a new one.
+          </a>
+        </div>
         {isInitializing && <h3>Preparing preview...</h3>}
         {isInitializing && isPastAverageBootupTime && (
           <p>
@@ -181,7 +197,7 @@ class IframePreview extends React.PureComponent {
             have encountered an error. <br />
             <br />
             You may choose to wait a bit more or you can{" "}
-            <a href="#" onClick={(e) => this._startNew({ forceNew: true })}>
+            <a href="#" onClick={(e) => this._handleClickCreateNewOne(e)}>
               click here to create a new one.
             </a>
           </p>

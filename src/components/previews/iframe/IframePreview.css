@@ -38,3 +38,10 @@
   align-content: center;
   color: #1d1d1d;
 }
+
+.navHeader {
+  background-color: #1d1d1d;
+  color: #fafafa;
+  padding: 10px;
+  font-size: 12px;
+}
