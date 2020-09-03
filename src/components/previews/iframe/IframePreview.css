@@ -4,6 +4,13 @@
 
 .componentWrapper p {
   padding: 1em;
+  margin: 0 auto;
+}
+
+.componentWrapper h3 {
+  font-weight: normal;
+  margin: 0;
+  padding: 2em;
 }
 
 .iframeContainer iframe {
@@ -11,7 +18,7 @@
   height: 100%;
   left: 0;
   position: absolute;
-  top: 0;
+  top: 20;
   width: 100%;
 }
 
@@ -21,7 +28,7 @@
   left: 0;
   position: absolute;
   visibility: hidden;
-  top: 0;
+  top: 20;
   width: 100%;
 }
 

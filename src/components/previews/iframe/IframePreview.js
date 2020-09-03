@@ -22,6 +22,7 @@ class IframePreview extends React.PureComponent {
     isCreating: true,
     isInitializing: false,
     hasLoaded: false,
+    isPastAverageBootupTime: false,
     url: "",
     error: false,
     message: "",
@@ -68,7 +69,7 @@ class IframePreview extends React.PureComponent {
     }
   };
 
-  async componentDidMount() {
+  async _startNew({ forceNew = false } = {}) {
     const sitePreviewDetails = await this._determinePreviewUrl();
     console.log("sitePreviewDetails", sitePreviewDetails);
 
@@ -80,6 +81,7 @@ class IframePreview extends React.PureComponent {
             token: process.env.SANITY_STUDIO_READ_TOKEN,
           },
           sitePreview: sitePreviewDetails.site,
+          forceNew,
         });
         console.log("startSandbox", startSandbox);
 
@@ -98,16 +100,30 @@ class IframePreview extends React.PureComponent {
           url: startSandbox.data.url,
         });
       } catch (err) {
-        console.log(err);
+        console.log("err", err);
         this.setState({
           isCreating: false,
-          url: "",
           error: err,
         });
       }
     }
+  }
+
+  componentDidMount() {
+    this._startNew();
 
     window.addEventListener("message", this._checkHasSiteLoaded, false);
+  }
+
+  componentDidUpdate() {
+    if (this.state.isInitializing) {
+      const FIVE_MINUTES = 5 * 60 * 1000; // ms
+      // const FIVE_MINUTES = 5000; // ms
+      setTimeout(
+        () => this.setState({ isPastAverageBootupTime: true }),
+        FIVE_MINUTES
+      );
+    }
   }
 
   componentWillUnmount() {
@@ -115,16 +131,27 @@ class IframePreview extends React.PureComponent {
   }
 
   render() {
-    const { isCreating, error, isInitializing, hasLoaded, url } = this.state;
+    const {
+      isCreating,
+      error,
+      isInitializing,
+      isPastAverageBootupTime,
+      hasLoaded,
+      url,
+    } = this.state;
     const { displayed } = this.props.document;
     const { options } = this.props;
 
     let previewUrl = url;
+    console.log("this.state", this.state);
+    console.log("render -> previewUrl", previewUrl);
 
     if (error) {
       return (
         <div className={styles.componentWrapper}>
-          <p>{this.state.message || "Error: " + error.msg || error.message}</p>
+          <h3>
+            {this.state.message || "Error: " + error.msg || error.message}
+          </h3>
         </div>
       );
     }
@@ -132,7 +159,7 @@ class IframePreview extends React.PureComponent {
     if (isCreating) {
       return (
         <div className={styles.componentWrapper}>
-          <p>Creating site preview...</p>
+          <h3>Creating preview...</h3>
         </div>
       );
     }
@@ -147,7 +174,19 @@ class IframePreview extends React.PureComponent {
 
     return (
       <div className={styles.componentWrapper}>
-        {isInitializing && <p>Preparing site preview...</p>}
+        {isInitializing && <h3>Preparing preview...</h3>}
+        {isInitializing && isPastAverageBootupTime && (
+          <p>
+            <br /> Ooops! This is taking longer than normally expected, it might
+            have encountered an error. <br />
+            <br />
+            You may choose to wait a bit more or you can{" "}
+            <a href="#" onClick={(e) => this._startNew({ forceNew: true })}>
+              click here to create a new one.
+            </a>
+          </p>
+        )}
+
         <div
           className={
             isInitializing
