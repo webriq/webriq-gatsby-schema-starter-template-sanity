@@ -1,3 +1,7 @@
+.componentWrapper {
+  text-align: center;
+}
+
 .componentWrapper p {
   padding: 1em;
 }
@@ -9,4 +13,21 @@
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.iframeContainerHidden iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: #1d1d1d;
 }

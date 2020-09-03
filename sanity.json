@@ -1,7 +1,7 @@
 {
   "root": true,
   "api": {
-    "projectId": "dwkgbi7l",
+    "projectId": "l670kdwr",
     "dataset": "production"
   },
   "project": {
@@ -14,7 +14,7 @@
       "title": "WebriQ Studio",
       "default": true,
       "api": {
-        "projectId": "dwkgbi7l",
+        "projectId": "l670kdwr",
         "dataset": "production"
       }
     }
@@ -36,10 +36,6 @@
     {
       "name": "part:@sanity/desk-tool/structure",
       "path": "./deskStructure/index"
-    },
-    {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "src/dashboardConfig.js"
     },
     {
       "implements": "part:@sanity/base/brand-logo",

@@ -17,62 +17,62 @@ import category from "./category";
 
 // Hide document types that we already have a structure definition for
 const hiddenTypes = [
-	"category",
-	"companyInfo",
-	"page",
-	"person",
-	"post",
-	"project",
-	"siteSettings"
+  "category",
+  "companyInfo",
+  "page",
+  "person",
+  "post",
+  "project",
+  "siteSettings",
 ];
 
 const studio = S.list()
-	.title("Content")
-	.items([
-		siteSettings,
-		companyInfo,
-		projects,
-		post,
-		pages,
-		people,
-		category,
-		...S.documentTypeListItems().filter(
-			listItem => !hiddenTypes.includes(listItem.getId())
-		)
-	]);
+  .title("Content")
+  .items([
+    siteSettings,
+    companyInfo,
+    projects,
+    post,
+    pages,
+    people,
+    category,
+    ...S.documentTypeListItems().filter(
+      (listItem) => !hiddenTypes.includes(listItem.getId())
+    ),
+  ]);
+
+console.log("process.env", process.env);
+console.log("SANITY_STUDIO_READ_TOKEN", process.env.SANITY_STUDIO_READ_TOKEN);
+console.log("SANITY_STUDIO_TEST", process.env.SANITY_STUDIO_TEST);
 
 const locations = {
-	studio
+  studio,
 };
 let last = "";
 // Send a message to the parent
 var sendMessage = function(msg) {
-	// // console.log(msg);
-	// console.log(JSON.stringify(msg));
-	// Make sure you are sending a string, and to stringify JSON
-	window.parent.postMessage(JSON.stringify(msg), "*");
+  // // console.log(msg);
+  // console.log(JSON.stringify(msg));
+  // Make sure you are sending a string, and to stringify JSON
+  window.parent.postMessage(JSON.stringify(msg), "*");
 };
 
 export default () => {
-	return locationStore.state.pipe(
-		map(({ location }) => {
-			console.table(location);
+  return locationStore.state.pipe(
+    map(({ location }) => {
+      // console.table(location);
 
-			sendMessage({
-				origin: "sanityStudio",
-				currentPath: location.pathname
-			});
+      sendMessage({
+        origin: "sanityStudio",
+        currentPath: location.pathname,
+      });
 
-			window.currentStudioLocation = location;
-			const loc =
-				location.pathname.split("/")[1].replace("intent", last) ||
-				"studio";
-			last = loc !== "intent" && loc;
-			console.log("PATH", loc);
-			return locations[loc];
-		})
-	);
+      window.currentStudioLocation = location;
+      const loc =
+        location.pathname.split("/")[1].replace("intent", last) || "studio";
+      last = loc !== "intent" && loc;
+      // console.log("PATH", loc);
+      return locations[loc];
+    })
+  );
 };
-//
-
-// console.log(location.pathname.split("/")[1]);
