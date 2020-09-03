@@ -70,6 +70,18 @@ class IframePreview extends React.PureComponent {
   };
 
   async _createNew({ forceNew = false } = {}) {
+    this.setState({
+      hasCheckedActiveSession: false,
+      hasActiveSession: false,
+      isCreating: true,
+      isInitializing: false,
+      hasLoaded: false,
+      isPastAverageBootupTime: false,
+      url: "",
+      error: false,
+      message: "",
+    });
+
     const sitePreviewDetails = await this._determinePreviewUrl();
     console.log("sitePreviewDetails", sitePreviewDetails);
 
