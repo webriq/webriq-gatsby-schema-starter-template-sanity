@@ -24,7 +24,7 @@
     "@sanity/default-layout": "^1.149.19",
     "@sanity/default-login": "^1.149.18",
     "@sanity/desk-tool": "^1.149.19",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
